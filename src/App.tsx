@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import PokemonDetail from "./pages/PokemonDetail";
 import PokemonList from "./pages/PokemonList";
-import Navbar from "./components/NavBar";
+import NavBar from "./components/NavBar";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <Navbar />
+      <NavBar />
       <RouterProvider router={router} />
     </>
   );
