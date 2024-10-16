@@ -1,30 +1,24 @@
 import "./App.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import PokemonDetail from "./pages/PokemonDetail";
 import PokemonList from "./pages/PokemonList";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Navbar";
+import ROUTES from "./routes";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "pokemon/:pokemonName",
-    element: <PokemonDetail />,
-  },
-  {
-    path: "pokemon/List",
-    element: <PokemonList />,
-  },
-]);
 function App() {
   return (
-    <>
+    <Router>
       <NavBar />
-      <RouterProvider router={router} />
-    </>
+      <Routes>
+        <Route path={ROUTES.home} element={<Home />} />
+        <Route path={ROUTES.pokemonList} element={<PokemonList />} />
+        <Route
+          path={ROUTES.pokemonDetails(":id")}
+          element={<PokemonDetail />}
+        />
+      </Routes>
+    </Router>
   );
 }
 
