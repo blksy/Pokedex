@@ -1,4 +1,9 @@
 import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+import PokemonDetail from "./pages/PokemonDetail";
+import PokemonList from "./pages/PokemonList";
+import Navbar from "./components/NavBar";
 
 const router = createBrowserRouter([
   {
@@ -9,9 +14,18 @@ const router = createBrowserRouter([
     path: "pokemon/:pokemonName",
     element: <PokemonDetail />,
   },
+  {
+    path: "pokemon/List",
+    element: <PokemonList />,
+  },
 ]);
 function App() {
-  return <></>;
+  return (
+    <>
+      <Navbar />
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;

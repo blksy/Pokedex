@@ -1,5 +1,11 @@
-import React from "react";
+import style from "./Button.module.css";
 
-export default function Button() {
-  return <div></div>;
-}
+const Button = ({ children, onClick, disabled }: any) => {
+  return (
+    <button className={style.btn} onClick={onClick} disabled={disabled}>
+      {children}
+    </button>
+  );
+};
+
+export default Button;
