@@ -13,6 +13,7 @@
   border-radius: 30px;
   transition: all 0.1s ease-out;
   transform: scale(1);
+  border: 1px solid black;
 }
 .btn:hover {
   transform: scale(1.1);
