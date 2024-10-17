@@ -11,6 +11,7 @@ import PokemonDetail from "./pages/PokemonDetail";
 import PokemonList from "./pages/PokemonList";
 import NavBar from "./components/Navbar";
 import ROUTES from "./routes";
+import { fetchPokemon, fetchPokemonDetails } from "./api/PokemonApi";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -32,7 +33,7 @@ function AnimatedRoutes() {
               animate="visible"
               exit="exit"
               variants={pageTransition}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 1 }}
             >
               <Home />
             </motion.div>
@@ -46,7 +47,7 @@ function AnimatedRoutes() {
               animate="visible"
               exit="exit"
               variants={pageTransition}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 1 }}
             >
               <PokemonList />
             </motion.div>
@@ -60,7 +61,7 @@ function AnimatedRoutes() {
               animate="visible"
               exit="exit"
               variants={pageTransition}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 1 }}
             >
               <PokemonDetail />
             </motion.div>
