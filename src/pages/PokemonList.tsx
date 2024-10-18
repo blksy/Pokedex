@@ -33,8 +33,14 @@ export default function PokemonList() {
               <p>{pokemon.name}</p>
             </div>
           ))}
-          <Button onClick={loadPokemonData}>Load more...</Button>
         </div>
+        <Button
+          className={style.btn}
+          onClick={loadPokemonData}
+          disabled={loading}
+        >
+          {loading ? "Loading..." : "Load more..."}
+        </Button>
       </div>
     </>
   );

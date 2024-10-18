@@ -3,4 +3,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 100px;
+}
+.pokemonList {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 200px;
+  padding-left: 200px;
+}
+.header {
+  font-size: 30px;
+  margin-top: 200px;
+  padding-left: 600px;
+  padding-bottom: 100px;
+}
+
+.btn {
+  padding-bottom: 100px;
 }

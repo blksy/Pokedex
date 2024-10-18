@@ -1,9 +1,8 @@
 .navbar {
-  background: rgb(255, 255, 255);
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 1) 0%,
-    rgba(255, 33, 0, 0.19931722689075626) 60%
+    rgba(255, 33, 0, 0.19931722689075626) 0%
   );
   color: #fff;
   padding: 20px 100px;

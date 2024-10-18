@@ -7,4 +7,5 @@
 body {
   height: 100%;
   background-image: url("./assets/bgPokedex.svg");
+  z-index: 1;
 }
