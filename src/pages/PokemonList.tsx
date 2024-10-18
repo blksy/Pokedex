@@ -11,11 +11,20 @@ export default function PokemonList() {
   const loadPokemonData = async () => {
     setLoading(true);
     try {
-      const pokemonData = await fetchPokemon(20, offset);
-      setPokemonList((prevList) => [...prevList, ...pokemonData]);
+      const pokemonData = await fetchPokemon(offset, 20);
+      setPokemonList((prevList) => {
+        const existingNames = new Set(prevList.map((pokemon) => pokemon.name));
+        const newPokemon = pokemonData.filter(
+          (pokemon) => !existingNames.has(pokemon.name)
+        );
+        return [...prevList, ...newPokemon];
+      });
+
       setOffset((prevOffset) => prevOffset + 20);
     } catch (error) {
       console.error("Error fetching Pokémon:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
