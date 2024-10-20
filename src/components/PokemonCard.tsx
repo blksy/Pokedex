@@ -15,7 +15,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
   return (
     <div className={style.card} onClick={onClick}>
       <img src={imageUrl} alt={name} className={style.sprite} />
-      <h3>{name}</h3>
+      <h3>{name.charAt(0).toUpperCase() + name.slice(1)}</h3>
       <div className={style.types}>
         {types.map((type) => (
           <span key={type} className={style.type}>
