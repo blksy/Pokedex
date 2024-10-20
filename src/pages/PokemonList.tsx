@@ -45,8 +45,13 @@ export default function PokemonList() {
   }, []);
 
   const handlePokemonClick = (pokemonName: string) => {
-    navigate(ROUTES.pokemonDetails(pokemonName));
+    if (pokemonName) {
+      navigate(ROUTES.pokemonDetails(pokemonName));
+    } else {
+      console.error("Pokemon name is undefined, cannot navigate to details.");
+    }
   };
+
   return (
     <>
       <h2 className={style.header}>Below You Can See All Existing Pokémon</h2>

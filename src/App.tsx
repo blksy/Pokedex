@@ -9,9 +9,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import Home from "./pages/Home";
 import PokemonDetail from "./pages/PokemonDetail";
 import PokemonList from "./pages/PokemonList";
-import NavBar from "./components/Navbar";
+import NavBar from "./components/NavBar";
 import ROUTES from "./routes";
-import { fetchPokemon, fetchPokemonDetails } from "./api/PokemonApi";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -54,7 +53,7 @@ function AnimatedRoutes() {
           }
         />
         <Route
-          path={ROUTES.pokemonDetails(":id")}
+          path={`/pokemon/:pokemonName`}
           element={
             <motion.div
               initial="hidden"
@@ -71,6 +70,7 @@ function AnimatedRoutes() {
     </AnimatePresence>
   );
 }
+
 function App() {
   return (
     <Router>

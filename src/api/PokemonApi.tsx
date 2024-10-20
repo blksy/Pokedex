@@ -8,17 +8,20 @@ export const fetchPokemon = async (offset: number, limit: number) => {
   );
   return response.data.results;
 };
-export const fetchPokemonDetails = async (name: string) => {
+export const fetchPokemonDetails = async (pokemonName: string) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}pokemon/${name}`);
-    const { weight, height, types, sprites } = response.data;
-    const pokemonTypes = types.map((typeObj: any) => typeObj.type.name);
+    const response = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+    );
     return {
-      name,
-      weight,
-      height,
-      types: pokemonTypes,
-      sprite: sprites.front_default,
+      name: response.data.name,
+      sprite: response.data.sprites.other["official-artwork"].front_default,
+      types: response.data.types.map((type: any) => type.type.name),
+      height: response.data.height,
+      weight: response.data.weight,
+      abilities: response.data.abilities.map(
+        (ability: any) => ability.ability.name
+      ),
     };
   } catch (error) {
     console.error("Error fetching Pokémon details:", error);
