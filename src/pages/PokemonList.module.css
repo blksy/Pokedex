@@ -9,7 +9,8 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: 300px;
-  padding-left: 200px;
+  padding-left: 180px;
+  padding-right: 200px;
   margin-bottom: 100px;
 }
 .header {

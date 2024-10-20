@@ -18,7 +18,10 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
       <h3>{name.charAt(0).toUpperCase() + name.slice(1)}</h3>
       <div className={style.types}>
         {types.map((type) => (
-          <span key={type} className={style.type}>
+          <span
+            key={type}
+            className={`${style.type} ${style[type.toLowerCase()]}`}
+          >
             {type}
           </span>
         ))}
