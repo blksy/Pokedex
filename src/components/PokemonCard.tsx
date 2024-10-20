@@ -3,9 +3,28 @@ interface PokemonCardProps {
   name: string;
   imageUrl: string;
   types: string[];
+  onClick: () => void;
 }
-export default function PokemonCard{
-  return (
 
+const PokemonCard: React.FC<PokemonCardProps> = ({
+  name,
+  imageUrl,
+  types,
+  onClick,
+}) => {
+  return (
+    <div className={style.card} onClick={onClick}>
+      <img src={imageUrl} alt={name} className={style.sprite} />
+      <h3>{name}</h3>
+      <div className={style.types}>
+        {types.map((type) => (
+          <span key={type} className={style.type}>
+            {type}
+          </span>
+        ))}
+      </div>
+    </div>
   );
-}
+};
+
+export default PokemonCard;

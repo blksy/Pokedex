@@ -1,6 +1,6 @@
 const ROUTES = {
   home: "/",
   pokemonList: "/pokemon/list",
-  pokemonDetails: (id: number | string) => `/pokemon/${id}`,
+  pokemonDetails: (name: string) => `/pokemon/${name}`,
 };
 export default ROUTES;

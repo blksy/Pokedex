@@ -9,7 +9,6 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: 300px;
-  border: 1px solid black;
   padding-left: 200px;
   margin-bottom: 100px;
 }

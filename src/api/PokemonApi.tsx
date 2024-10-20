@@ -8,13 +8,11 @@ export const fetchPokemon = async (offset: number, limit: number) => {
   );
   return response.data.results;
 };
-
-export const fetchPokemonDetails = async (id: number) => {
+export const fetchPokemonDetails = async (name: string) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}pokemon/${id}`);
-    const { name, weight, height, types, sprites } = response.data;
+    const response = await axios.get(`${API_BASE_URL}pokemon/${name}`);
+    const { weight, height, types, sprites } = response.data;
     const pokemonTypes = types.map((typeObj: any) => typeObj.type.name);
-
     return {
       name,
       weight,

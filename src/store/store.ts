@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const store = configureStore({
   reducer: {
-    pokemon: pokemonReducer,
+    //   pokemon: pokemonReducer,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;
