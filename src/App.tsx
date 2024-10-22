@@ -5,6 +5,8 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
+import { store } from "./store/store";
+import { Provider } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
 import Home from "./pages/Home";
 import PokemonDetail from "./pages/PokemonDetail";
@@ -73,10 +75,12 @@ function AnimatedRoutes() {
 
 function App() {
   return (
-    <Router>
-      <NavBar />
-      <AnimatedRoutes />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <NavBar />
+        <AnimatedRoutes />
+      </Router>
+    </Provider>
   );
 }
 

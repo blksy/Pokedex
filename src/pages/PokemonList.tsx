@@ -5,33 +5,31 @@ import { fetchPokemon, fetchPokemonDetails } from "../api/PokemonApi";
 import PokemonCard from "../components/PokemonCard";
 import { useNavigate } from "react-router";
 import ROUTES from "../routes";
+import { appendPokemonList } from "../components/pokemonSlice";
+import { useAppDispatch, useAppSelector } from "../store/store";
 
 export default function PokemonList() {
-  const [pokemonList, setPokemonList] = useState<any[]>([]);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { filteredPokemon } = useAppSelector((state) => state.pokemon);
   const [offset, setOffset] = useState(0);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const loadPokemonData = async () => {
     setLoading(true);
     try {
       const pokemonData = await fetchPokemon(offset, 20);
-
       const detailedPokemonData = await Promise.all(
         pokemonData.map(async (pokemon: any) => {
           const details = await fetchPokemonDetails(pokemon.name);
           return details;
         })
       );
-
-      setPokemonList((prevList) => {
-        const existingNames = new Set(prevList.map((pokemon) => pokemon.name));
-        const newPokemon = detailedPokemonData.filter(
-          (pokemon) => !existingNames.has(pokemon.name)
-        );
-        return [...prevList, ...newPokemon];
-      });
-
+      const uniquePokemonData = detailedPokemonData.filter(
+        (pokemon, index, self) =>
+          index === self.findIndex((p) => p.name === pokemon.name)
+      );
+      dispatch(appendPokemonList(uniquePokemonData));
       setOffset((prevOffset) => prevOffset + 20);
     } catch (error) {
       console.error("Error fetching Pokémon:", error);
@@ -57,7 +55,7 @@ export default function PokemonList() {
       <h2 className={style.header}>Below You Can See All Existing Pokémon</h2>
       <div className={style.listContainer}>
         <div className={style.pokemonList}>
-          {pokemonList.map((pokemon, index) => (
+          {filteredPokemon.map((pokemon, index) => (
             <PokemonCard
               key={index}
               name={pokemon.name}
@@ -67,11 +65,7 @@ export default function PokemonList() {
             />
           ))}
         </div>
-        <Button
-          className={style.btn}
-          onClick={loadPokemonData}
-          disabled={loading}
-        >
+        <Button onClick={loadPokemonData} disabled={loading}>
           {loading ? "Loading..." : "Load more..."}
         </Button>
       </div>
