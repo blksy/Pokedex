@@ -4,7 +4,7 @@ import style from "./NavBar.module.css";
 import ROUTES from "../routes";
 import { useAppDispatch } from "../store/store";
 import { useState } from "react";
-import { setFilters } from "./pokemonSlice";
+import { setFilters } from "../store/pokemonSlice";
 
 export default function NavBar() {
   const dispatch = useAppDispatch();

@@ -5,7 +5,7 @@ import { fetchPokemon, fetchPokemonDetails } from "../api/PokemonApi";
 import PokemonCard from "../components/PokemonCard";
 import { useNavigate } from "react-router";
 import ROUTES from "../routes";
-import { appendPokemonList } from "../components/pokemonSlice";
+import { appendPokemonList } from "../store/pokemonSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
 
 export default function PokemonList() {
