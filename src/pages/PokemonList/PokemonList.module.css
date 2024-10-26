@@ -23,3 +23,41 @@
 .btn {
   padding-bottom: 100px;
 }
+
+@media (max-width: 768px) {
+  .pokemonList {
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .header {
+    font-size: 26px;
+    margin-top: 150px;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .btn {
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pokemonList {
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .header {
+    font-size: 22px;
+    margin-top: 100px;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .btn {
+    padding-bottom: 30px;
+  }
+}
