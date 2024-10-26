@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import Button from "../components/Button";
+import Button from "../../components/Button/Button";
 import style from "./PokemonList.module.css";
-import { fetchPokemon, fetchPokemonDetails } from "../api/PokemonApi";
-import PokemonCard from "../components/PokemonCard";
+import { fetchPokemon, fetchPokemonDetails } from "../../api/PokemonApi";
+import PokemonCard from "../../components/PokemonCard/PokemonCard";
 import { useNavigate } from "react-router";
-import ROUTES from "../routes";
-import { appendPokemonList } from "../store/pokemonSlice";
-import { useAppDispatch, useAppSelector } from "../store/store";
+import ROUTES from "../../routes";
+import { appendPokemonList } from "../../store/pokemonSlice";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 
 export default function PokemonList() {
   const navigate = useNavigate();

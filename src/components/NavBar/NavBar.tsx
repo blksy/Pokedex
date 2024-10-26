@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import Button from "./Button";
+import Button from "../Button/Button";
 import style from "./NavBar.module.css";
-import ROUTES from "../routes";
-import { useAppDispatch } from "../store/store";
+import ROUTES from "../../routes";
+import { useAppDispatch } from "../../store/store";
 import { useState } from "react";
-import { setFilters } from "../store/pokemonSlice";
+import { setFilters } from "../../store/pokemonSlice";
 
 export default function NavBar() {
   const dispatch = useAppDispatch();

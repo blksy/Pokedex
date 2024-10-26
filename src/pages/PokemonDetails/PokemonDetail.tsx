@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { fetchPokemonDetails } from "../api/PokemonApi";
+import { fetchPokemonDetails } from "../../api/PokemonApi";
 import style from "./PokemonDetails.module.css";
-import Button from "../components/Button";
+import Button from "../../components/Button/Button";
 import { Link } from "react-router-dom";
-import ROUTES from "../routes";
+import ROUTES from "../../routes";
 
 export default function PokemonDetail() {
   const { pokemonName } = useParams<{ pokemonName: string }>();

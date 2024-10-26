@@ -8,10 +8,10 @@ import {
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
-import Home from "./pages/Home";
-import PokemonDetail from "./pages/PokemonDetail";
-import PokemonList from "./pages/PokemonList";
-import NavBar from "./components/NavBar";
+import Home from "./pages/Home/Home";
+import PokemonDetail from "./pages/PokemonDetails/PokemonDetail";
+import PokemonList from "./pages/PokemonList/PokemonList";
+import NavBar from "./components/NavBar/NavBar";
 import ROUTES from "./routes";
 
 function AnimatedRoutes() {
