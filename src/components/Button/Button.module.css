@@ -19,3 +19,23 @@
   transform: scale(1.1);
   background: linear-gradient(to right, red, white);
 }
+
+@media (max-width: 768px) {
+  .btn {
+    width: 160px;
+    font-size: 16px;
+    padding: 10px 16px;
+    margin-left: 10px;
+    margin-right: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    width: 140px;
+    font-size: 14px;
+    padding: 8px 14px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}

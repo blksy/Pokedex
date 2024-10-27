@@ -1,35 +1,44 @@
 import { useEffect, useState } from "react";
-import Button from "../components/Button";
+import Button from "../../components/Button/Button";
 import style from "./PokemonList.module.css";
-import { fetchPokemon, fetchPokemonDetails } from "../api/PokemonApi";
-import PokemonCard from "../components/PokemonCard";
+import { fetchPokemon, fetchPokemonDetails } from "../../api/PokemonApi";
+import PokemonCard from "../../components/PokemonCard/PokemonCard";
 import { useNavigate } from "react-router";
-import ROUTES from "../routes";
-import { appendPokemonList } from "../components/pokemonSlice";
-import { useAppDispatch, useAppSelector } from "../store/store";
+import ROUTES from "../../routes";
+import { appendPokemonList, setPokemonList } from "../../store/pokemonSlice";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 
 export default function PokemonList() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { filteredPokemon } = useAppSelector((state) => state.pokemon);
+  const { filteredPokemon, pokemonList } = useAppSelector(
+    (state) => state.pokemon
+  );
   const [offset, setOffset] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  const loadPokemonData = async () => {
+  const loadPokemonData = async (isInitialLoad = false) => {
     setLoading(true);
     try {
       const pokemonData = await fetchPokemon(offset, 20);
       const detailedPokemonData = await Promise.all(
-        pokemonData.map(async (pokemon: any) => {
+        pokemonData.map(async (pokemon) => {
           const details = await fetchPokemonDetails(pokemon.name);
           return details;
         })
       );
+
       const uniquePokemonData = detailedPokemonData.filter(
         (pokemon, index, self) =>
           index === self.findIndex((p) => p.name === pokemon.name)
       );
-      dispatch(appendPokemonList(uniquePokemonData));
+
+      if (isInitialLoad) {
+        dispatch(setPokemonList(uniquePokemonData));
+      } else {
+        dispatch(appendPokemonList(uniquePokemonData));
+      }
+
       setOffset((prevOffset) => prevOffset + 20);
     } catch (error) {
       console.error("Error fetching Pokémon:", error);
@@ -39,7 +48,9 @@ export default function PokemonList() {
   };
 
   useEffect(() => {
-    loadPokemonData();
+    if (pokemonList.length === 0) {
+      loadPokemonData(true);
+    }
   }, []);
 
   const handlePokemonClick = (pokemonName: string) => {
@@ -65,7 +76,7 @@ export default function PokemonList() {
             />
           ))}
         </div>
-        <Button onClick={loadPokemonData} disabled={loading}>
+        <Button onClick={() => loadPokemonData(false)} disabled={loading}>
           {loading ? "Loading..." : "Load more..."}
         </Button>
       </div>

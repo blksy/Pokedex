@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Button from "../components/Button";
+import Button from "../../components/Button/Button";
 import style from "./Home.module.css";
-import ROUTES from "../routes";
+import ROUTES from "../../routes";
 export default function Home() {
   return (
     <div className={style.container}>
