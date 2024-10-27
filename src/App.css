@@ -7,5 +7,20 @@
 body {
   height: 100%;
   background-image: url("./assets/bgPokedex.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
   z-index: 1;
+}
+@media (max-width: 768px) {
+  .body {
+    background-size: cover;
+    background-image: url("./assets/bgPokedex.svg");
+  }
+}
+@media (max-width: 480px) {
+  .body {
+    background-size: cover;
+    background-image: url("./assets/bgPokedex.svg");
+  }
 }
