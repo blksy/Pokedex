@@ -21,7 +21,7 @@ export default function NavBar() {
       <div className={style.container}>
         <div className={style.logo} />
         <Link to={ROUTES.home}>
-          <Button>Home</Button>
+          <Button className={style.btn}>Home</Button>
         </Link>
         <form className={style.searchForm} onSubmit={handleSearch}>
           <input

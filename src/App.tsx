@@ -91,7 +91,7 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      {process.env.NODE_ENV === "development" && (
+      {(process.env.NODE_ENV as string) === "development" && (
         <ReactQueryDevtools position="bottom" initialIsOpen={false} />
       )}{" "}
       <Provider store={store}>

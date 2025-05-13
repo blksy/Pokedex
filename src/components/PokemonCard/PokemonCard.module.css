@@ -4,7 +4,6 @@
   padding: 30px;
   margin-bottom: 20px;
   text-align: center;
-  margin-left: 10px;
   width: 300px;
   cursor: pointer;
   transition: transform 0.2s ease;
@@ -105,4 +104,36 @@
 .electric {
   background-color: yellow;
   color: black;
+}
+@media (max-width: 768px) {
+  .card {
+    padding: 20px;
+    max-width: 250px;
+  }
+
+  .sprite {
+    width: 120px;
+    height: 120px;
+  }
+
+  .type {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 15px;
+    max-width: 200px;
+  }
+
+  .sprite {
+    width: 100px;
+    height: 100px;
+  }
+
+  .type {
+    font-size: 14px;
+    padding: 3px 6px;
+  }
 }

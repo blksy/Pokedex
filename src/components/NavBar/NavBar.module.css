@@ -94,6 +94,7 @@ form input {
   }
 
   form input {
+    padding-top: 5px;
     font-size: 12px;
     height: 35px;
     padding-left: 10px;
